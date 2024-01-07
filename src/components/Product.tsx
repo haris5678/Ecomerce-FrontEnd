@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Box, Grid, styled, Paper, Button } from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import { Scale } from "@mui/icons-material";
-import ScaleIn from "material-ui/internal/ScaleIn";
+import { Link } from "react-router-dom";
+// import { Scale } from "@mui/icons-material";
+// import ScaleIn from "material-ui/internal/ScaleIn";
 // import { Paper } from "material-ui";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -99,35 +100,40 @@ const ProductList: React.FC = () => {
           {products &&
             products.map(prod =>
               <Grid item xs={2} sm={4} md={4} key={prod.id}>
-                <Item
-                  sx={{
-                    border: "1px solid #000000",
-                    marginLeft: "30px",
-                    marginRight: "30px"
-                  }}
+                <Link
+                  to={`/product/${prod.id}`}
+                  style={{ textDecoration: "none" }}
                 >
-                  <div style={{ whiteSpace: "pre-line" }}>
-                    <div style={{ fontWeight: "bold", color: "black" }}>
-                      {prod.title}
+                  <Item
+                    sx={{
+                      border: "1px solid #000000",
+                      marginLeft: "30px",
+                      marginRight: "30px"
+                    }}
+                  >
+                    <div style={{ whiteSpace: "pre-line" }}>
+                      <div style={{ fontWeight: "bold", color: "black" }}>
+                        {prod.title}
+                      </div>
+                      <div style={{ color: "black" }}>
+                        {prod.price}
+                      </div>
+                      <div>
+                        <StyledButton
+                          variant="contained"
+                          sx={{
+                            height: "fit-content",
+                            width: "fit-content",
+                            color: "black",
+                            backgroundColor: "gray"
+                          }}
+                        >
+                          <ShoppingBagIcon fontSize="medium" />
+                        </StyledButton>
+                      </div>
                     </div>
-                    <div style={{ color: "black" }}>
-                      {prod.price}
-                    </div>
-                    <div>
-                      <StyledButton
-                        variant="contained"
-                        sx={{
-                          height: "fit-content",
-                          width: "fit-content",
-                          color: "black",
-                          backgroundColor: "gray"
-                        }}
-                      >
-                        <ShoppingBagIcon fontSize="medium" />
-                      </StyledButton>
-                    </div>
-                  </div>
-                </Item>
+                  </Item>
+                </Link>
               </Grid>
             )}
         </Grid>

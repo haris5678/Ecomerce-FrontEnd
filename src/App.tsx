@@ -8,6 +8,7 @@ import SignIn from "./components/SignInForm";
 import ProductList from "./components/Product";
 import ForgetPassword from "./components/ForgetPassword";
 import UploadProduct from "./components/UploadProduct";
+import ProductDetail from "./components/ProductDetail";
 import React, { useEffect, useState } from "react";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/login" element={<SignIn setToken={setToken} />} />
           <Route path="/product" element={<ProductList />} />
+          <Route path="/product/:productId" element={<ProductDetail />} />
           <Route path="/" element={<ProductList />} />
           <Route
             path="/forgot-password"
