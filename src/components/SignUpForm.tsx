@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,7 +13,6 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { FormControl, InputLabel, Select, Slide } from "@mui/material";
 import { MenuItem } from "@mui/material";
-// import { SelectChangeEvent } from "@mui/material";
 import axios from "axios";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -49,14 +49,6 @@ export default function SignUp() {
   const [passwordError, setPasswordError] = React.useState("");
   const [roleIdError, setRoleIdError] = React.useState("");
 
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
-  //--------------------------------------------------------------------
-
-  //---------------------------------------------------------------------
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -66,18 +58,11 @@ export default function SignUp() {
     setOpen(false);
   };
 
-  // const handleChange = (event: SelectChangeEvent<string>) => {
-  //   setRole(event.target.value);
-  // };
-
   const validateFullName = () => {
-    // Implement your validation logic here
     if (!name) {
       setFullNameError("Full name is required");
-      // return false;
     } else {
       setFullNameError("");
-      // return true;
     }
   };
 
@@ -92,10 +77,8 @@ export default function SignUp() {
   const validatePassword = () => {
     if (password.length < 8) {
       setPasswordError("Password must be at least 8 characters");
-      // return false;
     } else {
       setPasswordError("");
-      // return true;
     }
   };
 
@@ -103,7 +86,6 @@ export default function SignUp() {
     // Implement role ID validation logic here
     if (!role) {
       setRoleIdError("Role ID is required");
-      // return false;
     } else {
       setRoleIdError("");
     }
@@ -196,6 +178,9 @@ export default function SignUp() {
           setText(error.response.data.message);
         }
       });
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   };
 
   return (
@@ -301,14 +286,6 @@ export default function SignUp() {
                   </span>
                 </Box>
               </Grid>
-              {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid> */}
             </Grid>
             <Button
               type="submit"
@@ -323,7 +300,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link component={RouterLink} to="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
@@ -350,7 +327,6 @@ export default function SignUp() {
             {okButton && <Button onClick={handleOk}>Ok</Button>}
           </DialogActions>
         </Dialog>
-        {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </ThemeProvider>
   );
