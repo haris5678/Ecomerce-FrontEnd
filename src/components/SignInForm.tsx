@@ -226,7 +226,7 @@ export default function SignIn({ setToken }) {
                 </Link>
               </Grid>
               <Grid item>
-                <Link component={RouterLink} to="/" variant="body2">
+                <Link component={RouterLink} to="/sign-up" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

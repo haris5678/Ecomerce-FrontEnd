@@ -1,7 +1,7 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+// import { Link as RouterLink } from "react-router-dom";
 
-import { Unstable_NumberInput as NumberInput } from "@mui/base/Unstable_NumberInput";
+// import { Unstable_NumberInput as NumberInput } from "@mui/base/Unstable_NumberInput";
 
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -25,7 +25,8 @@ const UploadProduct = ({ setToken }) => {
   const [description, setDescription] = React.useState<string>("");
   const [price, setPrice] = React.useState<number>();
   const [qty, setQty] = React.useState<number>();
-  const [category_id, setCategory_id] = React.useState("");
+  // const [categories, setCategories] = useState([]);
+  const [category_id, setCategory_id] = React.useState<string>("");
   const [titleError, setTitleError] = React.useState("");
   const [descriptionError, setDescriptionError] = React.useState("");
   const [priceError, setPriceError] = React.useState("");
@@ -328,7 +329,7 @@ const UploadProduct = ({ setToken }) => {
                   required
                   fullWidth
                   name="category_id"
-                  label="category_id"
+                  label="Category"
                   type="category_id"
                   id="category_id"
                   value={category_id}
@@ -336,7 +337,13 @@ const UploadProduct = ({ setToken }) => {
                     setCategory_id(e.target.value);
                   }}
                   //   autoComplete="current-password"
-                />
+                >
+                  {/* {categories.map((category: { id: number; name: string }) =>
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  )} */}
+                </TextField>
                 <span style={{ color: "red", fontSize: "13px" }}>
                   {category_idError}
                 </span>
